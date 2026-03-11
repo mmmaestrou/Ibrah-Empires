@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ibrah Empire - Farm-Fresh Produce Delivered</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-green: #2e7d32;
+            --light-green: #e8f5e9;
+            --dark-green: #1b5e20;
+            --accent-yellow: #ffd54f;
+            --text-dark: #263238;
+            --text-light: #546e7a;
+            --white: #ffffff;
+            --gray-bg: #f9f9f9;
+            --border-color: #e0e0e0;
+        }
+
+        body {
+            background-color: var(--gray-bg);
+            color: var(--text-dark);
+        }
+
+        /* Announcement Bar */
+        .announcement {
+            background-color: var(--dark-green);
+            color: var(--white);
+            text-align: center;
+            padding: 8px;
+            font-size: 14px;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--white);
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            font-size: 30px;
+            color: var(--primary-green);
+        }
+
+        .logo span {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--dark-green);
+        }
+
+        .logo p {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-left: 10px;
+        }
+
+        .search-bar {
+            flex: 0 1 400px;
+            display: flex;
+            align-items: center;
+            background-color: var(--gray-bg);
+            border-radius: 25px;
+            padding: 5px 15px;
+            border: 1px solid var(--border-color);
+        }
+
+        .search-bar input {
+            flex: 1;
+            border: none;
+            background: transparent;
+            padding: 10px;
+            outline: none;
+        }
+
+        .search-bar button {
+            background: none;
+            border: none;
+            color: var(--primary-green);
+            cursor: pointer;
+        }
+
+        .header-icons {
+            display: flex;
+            gap: 25px;
+        }
+
+        .header-icons i {
+            font-size: 20px;
+            color: var(--text-dark);
+            cursor: pointer;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--white);
+            padding: 0 50px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            padding: 15px 0;
+            display: block;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary-green);
+            border-bottom: 3px solid var(--primary-green);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--light-green) 0%, var(--white) 100%);
+            padding: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .hero-content {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .hero-content h1 {
+            font-size: 48px;
+            color: var(--dark-green);
+            margin-bottom: 15px;
+        }
+
+        .hero-content p {
+            font-size: 18px;
+            color: var(--text-light);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .savings-badge {
+            background-color: var(--accent-yellow);
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: inline-block;
+            margin: 20px 0;
+            font-weight: 600;
+        }
+
+        .shop-now-btn {
+            background-color: var(--primary-green);
+            color: var(--white);
+            border: none;
+            padding: 15px 40px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .shop-now-btn:hover {
+            background-color: var(--dark-green);
+        }
+
+        .hero-image {
+            flex: 1;
+            text-align: center;
+            min-width: 300px;
+        }
+
+        .hero-image i {
+            font-size: 200px;
+            color: var(--primary-green);
+        }
+
+        /* Categories Section */
+        .categories {
+            padding: 50px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .section-header h2 {
+            font-size: 28px;
+            color: var(--dark-green);
+        }
+
+        .view-all {
+            color: var(--primary-green);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+        }
+
+        .category-card {
+            background-color: var(--white);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .category-card i {
+            font-size: 40px;
+            color: var(--primary-green);
+            margin-bottom: 10px;
+        }
+
+        .category-card h3 {
+            font-size: 16px;
+            color: var(--text-dark);
+        }
+
+        /* Products Section */
+        .products {
+            padding: 50px;
+            background-color: var(--white);
+        }
+
+        .products-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .products-header h2 {
+            font-size: 28px;
+            color: var(--dark-green);
+        }
+
+        .see-more {
+            color: var(--primary-green);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background-color: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .product-image {
+            height: 200px;
+            background: linear-gradient(135deg, var(--light-green) 0%, #c8e6c9 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .product-image i {
+            font-size: 80px;
+            color: var(--primary-green);
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-info h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+        }
+
+        .product-info .description {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+
+        .price-section {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .current-price {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary-green);
+        }
+
+        .old-price {
+            font-size: 16px;
+            color: var(--text-light);
+            text-decoration: line-through;
+        }
+
+        .add-to-cart {
+            width: 100%;
+            background-color: var(--light-green);
+            color: var(--primary-green);
+            border: 1px solid var(--primary-green);
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .add-to-cart:hover {
+            background-color: var(--primary-green);
+            color: var(--white);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 50px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            background-color: var(--white);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .feature {
+            text-align: center;
+        }
+
+        .feature i {
+            font-size: 40px;
+            color: var(--primary-green);
+            margin-bottom: 15px;
+        }
+
+        .feature h4 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .feature p {
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-green);
+            color: var(--white);
+            padding: 50px 50px 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section a {
+            color: #a5d6a7;
+            text-decoration: none;
+        }
+
+        .footer-section a:hover {
+            color: var(--white);
+        }
+
+        .newsletter input {
+            padding: 10px;
+            width: 100%;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .newsletter button {
+            padding: 10px 20px;
+            background-color: var(--accent-yellow);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links i {
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #4caf50;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                padding: 20px;
+            }
+
+            .hero {
+                padding: 30px;
+            }
+
+            .hero-content h1 {
+                font-size: 32px;
+            }
+
+            .categories, .products, .features {
+                padding: 30px;
+            }
+
+            .nav-links {
+                gap: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .search-bar {
+                order: 3;
+                flex: 1 1 100%;
+                margin-top: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="announcement">
+        🌱 Free delivery on orders over KES 2,000 | Same-day delivery in Nairobi
+    </div>
+
+    <header>
+        <div class="logo">
+            <i class="fas fa-leaf"></i>
+            <span>FreshFarm</span>
+            <p>Farm-Fresh Groceries</p>
+        </div>
+        
+        <div class="search-bar">
+            <input type="text" placeholder="Search fresh produce...">
+            <button><i class="fas fa-search"></i></button>
+        </div>
+        
+        <div class="header-icons">
+            <i class="fas fa-user"></i>
+            <i class="fas fa-heart"></i>
+            <i class="fas fa-shopping-cart"></i>
+        </div>
+    </header>
+
+    <nav>
+        <ul class="nav-links">
+            <li><a href="#" class="active">Home</a></li>
+            <li><a href="#">Shop</a></li>
+            <li><a href="#">Categories</a></li>
+            <li><a href="#">Today's Deals</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Food Should Nourish, Not Harm!</h1>
+            <p>We've created easy access to safe, sustainably sourced, farm-fresh produce. From seasonal fruits and vegetables to pantry staples — hand-picked at peak freshness and delivered straight to your doorstep.</p>
+            <div class="savings-badge">
+                Enjoy up to 4% savings on every order
+            </div>
+            <button class="shop-now-btn">Start Shopping →</button>
+        </div>
+        <div class="hero-image">
+            <i class="fas fa-apple-alt"></i>
+        </div>
+    </section>
+
+    <section class="categories">
+        <div class="section-header">
+            <h2>Shop by Category</h2>
+            <a href="#" class="view-all">View All Categories →</a>
+        </div>
+        <div class="category-grid">
+            <div class="category-card">
+                <i class="fas fa-box"></i>
+                <h3>All Products</h3>
+            </div>
+            <div class="category-card">
+                <i class="fas fa-carrot"></i>
+                <h3>Vegetables</h3>
+            </div>
+            <div class="category-card">
+                <i class="fas fa-apple-alt"></i>
+                <h3>Fruits</h3>
+            </div>
+            <div class="category-card">
+                <i class="fas fa-seedling"></i>
+                <h3>Legumes & Pulses</h3>
+            </div>
+            <div class="category-card">
+                <i class="fas fa-drumstick-bite"></i>
+                <h3>Poultry Products</h3>
+            </div>
+            <div class="category-card">
+                <i class="fas fa-oil-can"></i>
+                <h3>Oil and Nut Crops</h3>
+            </div>
+        </div>
+    </section>
+
+    <section class="products">
+        <div class="products-header">
+            <h2>Fresh Picks for You</h2>
+            <a href="#" class="see-more">See more →</a>
+        </div>
+        <div class="product-grid">
+            <!-- Watermelon -->
+            <div class="product-card">
+                <div class="product-image">
+                    <i class="fas fa-watermelon"></i>
+                </div>
+                <div class="product-info">
+                    <h3>Watermelon</h3>
+                    <p class="description">Nice sugary melons, freshly grown from our farm</p>
+                    <div class="price-section">
+                        <span class="current-price">KES 80.00</span>
+                        <span class="old-price">KES 140.00</span>
+                    </div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Sagaa -->
+            <div class="product-card">
+                <div class="product-image">
+                    <i class="fas fa-leaf"></i>
+                </div>
+                <div class="product-info">
+                    <h3>Sagaa</h3>
+                    <p class="description">Fresh Kenyan Super Greens (Spider Plant, chinsaga, saget, tsisagaa)</p>
+                    <div class="price-section">
+                        <span class="current-price">KES 54.00</span>
+                        <span class="old-price">KES 60.00</span>
+                    </div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Managu -->
+            <div class="product-card">
+                <div class="product-image">
+                    <i class="fas fa-seedling"></i>
+                </div>
+                <div class="product-info">
+                    <h3>Managu</h3>
+                    <p class="description">Fresh Kenyan Super Greens - African Nightshade, nutrient powerhouse</p>
+                    <div class="price-section">
+                        <span class="current-price">KES 54.00</span>
+                        <span class="old-price">KES 60.00</span>
+                    </div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Kunde -->
+            <div class="product-card">
+                <div class="product-image">
+                    <i class="fas fa-seedling"></i>
+                </div>
+                <div class="product-info">
+                    <h3>Kunde</h3>
+                    <p class="description">Fresh Cowpea Leaves / Mboga ya Kunde - African Green Leafy Vegetables</p>
+                    <div class="price-section">
+                        <span class="current-price">KES 100.00</span>
+                        <span class="old-price">KES 150.00</span>
+                    </div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Amaranth Leaves -->
+            <div class="product-card">
+                <div class="product-image">
+                    <i class="fas fa-seedling"></i>
+                </div>
+                <div class="product-info">
+                    <h3>Amaranth Leaves</h3>
+                    <p class="description">Fresh Terre / Michicha / Dodo - African Green Leafy Vegetables</p>
+                    <div class="price-section">
+                        <span class="current-price">KES 100.00</span>
+                        <span class="old-price">KES 150.00</span>
+                    </div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Pumpkin Leaves -->
+            <div class="product-card">
+                <div class="product-image">
+                    <i class="fas fa-leaf"></i>
+                </div>
+                <div class="product-info">
+                    <h3>Pumpkin Leaves</h3>
+                    <p class="description">Fresh Muboora / Ugu / Pumpkin Greens - African Green Leafy Vegetables</p>
+                    <div class="price-section">
+                        <span class="current-price">KES 100.00</span>
+                        <span class="old-price">KES 150.00</span>
+                    </div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="feature">
+            <i class="fas fa-truck"></i>
+            <h4>Free Delivery</h4>
+            <p>On orders over KES 2,000</p>
+        </div>
+        <div class="feature">
+            <i class="fas fa-leaf"></i>
+            <h4>Farm Fresh</h4>
+            <p>Harvested just for you</p>
+        </div>
+        <div class="feature">
+            <i class="fas fa-shield-alt"></i>
+            <h4>Safe & Sustainable</h4>
+            <p>No harmful chemicals</p>
+        </div>
+        <div class="feature">
+            <i class="fas fa-clock"></i>
+            <h4>Same Day Del
